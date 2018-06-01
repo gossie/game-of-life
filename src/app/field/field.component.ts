@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { filter } from 'rxjs/operators';
 import { GameService } from '../game.service';
-import { OptionsService } from '../options.service';
-import { Options } from '../options';
+import { OptionsService } from '../options/options.service';
+import { Options } from '../options/options';
 import { Cell } from './cell';
 import { Field } from './field';
 import { Status } from './status';
@@ -38,8 +38,8 @@ export class FieldComponent implements OnInit {
     private checkOptions(options: Options): boolean {
         return this.field === undefined
             || (options.width > 0
-                && options.width !== this.field.getCells()[0].length
-                && options.height > 0
+                && options.width !== this.field.getCells()[0].length)
+            || (options.height > 0
                 && options.height !== this.field.getCells().length);
     }
 

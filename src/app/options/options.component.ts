@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OptionsService } from '../options.service';
-import { Options } from '../options';
+import { OptionsService } from './options.service';
+import { Options } from './options';
 
 @Component({
     selector: 'app-options',

@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FieldComponent } from './field/field.component';
 import { OptionsComponent } from './options/options.component';
-import { OptionsService } from './options.service';
+import { OptionsService } from './options/options.service';
 import { GameService } from './game.service';
 
 describe('AppComponent', () => {
