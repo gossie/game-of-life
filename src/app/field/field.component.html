@@ -1,0 +1,9 @@
+<div *ngFor="let row of field.getCells()" class="row">
+    <span *ngFor="let cell of row"
+            class="field"
+            [class.alive]="cell.status === 'alive'"
+            [class.dead]="cell.status === 'dead'"
+            (click)="onSelect(cell)">
+        &nbsp;
+    </span>
+</div>

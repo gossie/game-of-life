@@ -1,0 +1,19 @@
+.row {
+    height: 15px;
+}
+
+.field {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #00FF00;
+}
+
+.field.alive {
+    background-color: #FFFFFF;
+}
+
+.field.dead {
+    background-color: #000000;
+}
