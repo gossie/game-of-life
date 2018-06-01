@@ -39,7 +39,9 @@ export class FieldComponent implements OnInit {
     }
 
     private onOptionsChange(options: Options): void {
-        this.field = new Field(options.width, options.height);
+        if (this.checkOptions(options)) {
+            this.field = new Field(options.width, options.height);
+        }
     }
 
     public onSelect(cell: Cell): void {

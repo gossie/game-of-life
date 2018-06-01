@@ -36,7 +36,7 @@ export class AppComponent {
     }
 
     public pauseGame(): void {
-        this.gameService.stopGame();
+        this.gameService.pauseGame();
         this.isRunning = false;
     }
 }
