@@ -14,7 +14,7 @@ import {GameStoppedEvent} from '../game/game-stopped-event';
 })
 export class OptionsComponent implements OnInit {
 
-    public gameRunning: boolean = false;
+    public gameRunning: boolean;
 
     options: Options = {
         width: 25,

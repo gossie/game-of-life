@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
 import { GameService } from '../game/game.service';
 import { OptionsService } from '../options/options.service';
 import { Options } from '../options/options';
@@ -42,10 +41,11 @@ export class FieldComponent implements OnInit {
         if (this.checkOptions(options)) {
             this.field = new Field(options.width, options.height);
         }
+        this.field.setMaxNumberOfNewSamples(options.random);
     }
 
     public onSelect(cell: Cell): void {
-        if(cell.getStatus() === Status.ALIVE) {
+        if (cell.getStatus() === Status.ALIVE) {
             cell.setStatus(Status.DEAD);
         } else {
             cell.setStatus(Status.ALIVE);
