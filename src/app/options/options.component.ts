@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OptionsService } from './options.service';
 import { Options } from './options';
-import {GameService} from '../game.service';
+import {GameService} from '../game/game.service';
 
 @Component({
     selector: 'app-options',

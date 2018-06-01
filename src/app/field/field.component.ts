@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { filter } from 'rxjs/operators';
-import { GameService } from '../game.service';
+import { GameService } from '../game/game.service';
 import { OptionsService } from '../options/options.service';
 import { Options } from '../options/options';
 import { Cell } from './cell';

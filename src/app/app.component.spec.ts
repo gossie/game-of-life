@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { FieldComponent } from './field/field.component';
 import { OptionsComponent } from './options/options.component';
 import { OptionsService } from './options/options.service';
-import { GameService } from './game.service';
+import { GameService } from './game/game.service';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {

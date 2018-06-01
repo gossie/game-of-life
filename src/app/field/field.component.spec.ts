@@ -1,6 +1,6 @@
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
-import { GameService } from '../game.service';
+import { GameService } from '../game/game.service';
 import { OptionsService } from '../options/options.service';
 import { OptionsServiceMock } from '../options/options.service.mock';
 import { FieldComponent } from './field.component';
