@@ -25,9 +25,6 @@ export class FieldComponent implements OnInit {
             .subscribe(tick => this.onTick());
 
         this.optionsService.observe()
-            .pipe(
-                filter(options => this.checkOptions(options))
-            )
             .subscribe(options => this.onOptionsChange(options));
     }
 
@@ -37,10 +34,8 @@ export class FieldComponent implements OnInit {
 
     private checkOptions(options: Options): boolean {
         return this.field === undefined
-            || (options.width > 0
-                && options.width !== this.field.getCells()[0].length)
-            || (options.height > 0
-                && options.height !== this.field.getCells().length);
+            || (options.width > 0 && options.width !== this.field.getCells()[0].length)
+            || (options.height > 0 && options.height !== this.field.getCells().length);
     }
 
     private onOptionsChange(options: Options): void {
