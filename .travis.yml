@@ -3,6 +3,7 @@ sudo: required
 language: node_js
 addons:
   chrome: stable
+  firefox: latest
 node_js:
   - "node"
 script:
