@@ -10,7 +10,7 @@ import { OptionsService } from './options/options.service';
 })
 export class AppComponent {
 
-    isRunning: boolean = false;
+    isRunning = false;
 
     private timeout: number;
 
@@ -23,7 +23,7 @@ export class AppComponent {
             )
             .subscribe(options => {
                 this.timeout = options.tick;
-                if(this.isRunning) {
+                if (this.isRunning) {
                     this.pauseGame();
                     this.startGame();
                 }

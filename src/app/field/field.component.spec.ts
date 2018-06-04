@@ -32,8 +32,8 @@ describe('FieldComponent', () => {
         expect(component.field.getCells().length).toBe(75);
         component.field.getCells().forEach(row => expect(row.length).toBe(100));
 
-        for(let i: number = 0; i<75; i++) {
-            for(let j: number = 0; j<100; j++) {
+        for (let i = 0; i < 75; i++) {
+            for (let j = 0; j < 100; j++) {
                 const cell: Cell = component.field.getCells()[i][j];
 
                 expect(cell.getX()).toBe(j);
