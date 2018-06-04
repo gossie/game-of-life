@@ -3,23 +3,22 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { FieldComponent } from './field/field.component';
-import { OptionsComponent } from './options/options.component';
-import { OptionsService } from './options/options.service';
 import { GameService } from './game/game.service';
+import { OptionsModule } from './options/options.module';
+import { FieldModule } from './field/field.module';
 
 
 @NgModule({
     declarations: [
-        AppComponent,
-        FieldComponent,
-        OptionsComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        OptionsModule,
+        FieldModule
     ],
-    providers: [OptionsService, GameService],
+    providers: [GameService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

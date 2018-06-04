@@ -59,7 +59,7 @@ export class Field {
 
         for (let y = 0; y < this.cells.length; y++) {
             for (let x = 0; x < this.cells[y].length; x++) {
-                const numberOfAliveNeighbors = this.determineNumberOfAliveNeighbors(x, y);
+                const numberOfAliveNeighbors: number = this.determineNumberOfAliveNeighbors(x, y);
                 if (numberOfAliveNeighbors < 2) {
                     newCells[y][x] = new Cell(x, y, Status.DEAD);
                 } else if (numberOfAliveNeighbors > 3) {
