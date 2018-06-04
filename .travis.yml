@@ -3,6 +3,7 @@ node_js:
   - "node"
 script:
   - npm install
+  - npm run ci:test
 deploy: &heroku
   provider: heroku
   app: $HEROKU_APP_NAME
