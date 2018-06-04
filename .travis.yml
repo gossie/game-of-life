@@ -3,12 +3,11 @@ sudo: required
 language: node_js
 addons:
   chrome: stable
-  #firefox: latest
 node_js:
   - "node"
 script:
   - npm run ci:test
-  - npm run e2e
+  #- npm run e2e
 deploy: &heroku
   provider: heroku
   app: $HEROKU_APP_NAME
