@@ -1,10 +1,13 @@
+import { browser } from 'protractor';
 import { AppPage } from './page/app.po';
 import { FieldComponent } from './page/field.co';
+import { OptionsComponent } from './page/options.co';
 
 describe('game-of-life Field', () => {
     let page: AppPage;
 
     beforeEach(() => {
+        browser.waitForAngularEnabled(false);
         page = new AppPage();
         page.navigateTo();
     });
@@ -36,6 +39,13 @@ describe('game-of-life Field', () => {
         expect(await field.getRow(6).getCell(4).isAlive()).toBeTruthy();
         expect(await field.getRow(6).getCell(3).isAlive()).toBeTruthy();
 
+        const options: OptionsComponent = page.getOptions();
+        expect(await options.isWidthEnabled()).toBeTruthy();
+        expect(await options.isHeightEnabled()).toBeTruthy();
+
         await page.startGame();
+
+        expect(await options.isWidthEnabled()).toBeFalsy();
+        expect(await options.isHeightEnabled()).toBeFalsy();
     });
 });

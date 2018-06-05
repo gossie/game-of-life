@@ -1,8 +1,8 @@
 <p>
-    Breite: <input [(ngModel)]="options.width" (keyup)="onOptionsChange()" [attr.disabled]="gameRunning ? '' : null" />
+    Breite: <input id="width" [(ngModel)]="options.width" (keyup)="onOptionsChange()" [attr.disabled]="gameRunning ? '' : null" />
 </p>
 <p>
-    Höhe: <input [(ngModel)]="options.height" (keyup)="onOptionsChange()" [attr.disabled]="gameRunning ? '' : null" />
+    Höhe: <input id="height" [(ngModel)]="options.height" (keyup)="onOptionsChange()" [attr.disabled]="gameRunning ? '' : null" />
 </p>
 <p>
     Tick: <input [(ngModel)]="options.tick" (keyup)="onOptionsChange()" />

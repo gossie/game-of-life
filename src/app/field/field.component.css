@@ -10,10 +10,10 @@
     border: 1px solid #00FF00;
 }
 
-.field.alive {
+.cell.alive {
     background-color: #FFFFFF;
 }
 
-.field.dead {
+.cell.dead {
     background-color: #000000;
 }
