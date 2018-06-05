@@ -8,6 +8,7 @@
         "build": "ng build --prod",
         "test": "ng test",
         "ci:test": "ng test --watch false --browsers ChromeHeadless",
+        "ci:e2e": "ng e2e --capabilities.browserName=ChromeHeadless",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "postinstall": "ng build --aot -prod",

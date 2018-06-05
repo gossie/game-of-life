@@ -7,7 +7,7 @@ node_js:
   - "node"
 script:
   - npm run ci:test
-  #- npm run e2e
+  - npm run ci:e2e
 deploy: &heroku
   provider: heroku
   app: $HEROKU_APP_NAME
