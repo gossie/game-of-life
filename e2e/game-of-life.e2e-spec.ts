@@ -39,13 +39,12 @@ describe('game-of-life Field', () => {
         expect(await field.getRow(6).getCell(4).isAlive()).toBeTruthy();
         expect(await field.getRow(6).getCell(3).isAlive()).toBeTruthy();
 
-        const options: OptionsComponent = page.getOptions();
-        expect(await options.isWidthEnabled()).toBeTruthy();
-        expect(await options.isHeightEnabled()).toBeTruthy();
+        expect(await page.getOptions().isWidthEnabled()).toBeTruthy();
+        expect(await page.getOptions().isHeightEnabled()).toBeTruthy();
 
         await page.startGame();
 
-        expect(await options.isWidthEnabled()).toBeFalsy();
-        expect(await options.isHeightEnabled()).toBeFalsy();
+        expect(await page.getOptions().isWidthEnabled()).toBeFalsy();
+        expect(await page.getOptions().isHeightEnabled()).toBeFalsy();
     });
 });
