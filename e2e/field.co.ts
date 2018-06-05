@@ -1,5 +1,5 @@
 import { browser, by, element, ElementFinder, promise } from 'protractor';
-import { CellComponent } from './cell.co';
+import { RowComponent } from './row.co';
 
 export class FieldComponent {
 
@@ -10,10 +10,10 @@ export class FieldComponent {
     }
 
     public getNumberOfRows(): promise.Promise<number> {
-        return element.all(by.css('.row')).count();
+        return this.el.all(by.css('.row')).count();
     }
 
-    public getCell(x: number, y: number): CellComponent {
-        return null;
+    public getRow(index: number): RowComponent {
+        return new RowComponent(this.el.all(by.css('.row')).get(index));
     }
 }
