@@ -11,8 +11,7 @@
         "ci:e2e": "ng e2e --config protractor-ci.conf.js",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "postinstall": "ng build --aot -prod",
-        "serve:heroku": "node server.js"
+		"build:prod": "ng build --aot -prod"
     },
     "private": true,
     "engines": {

@@ -8,6 +8,7 @@ node_js:
 script:
   - npm run ci:test
   - npm run ci:e2e
+  - npm run build:prod
 deploy:
     provider: pages
     skip-cleanup: true
