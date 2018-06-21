@@ -1,0 +1,19 @@
+.row {
+    height: 15px;
+}
+
+.cell {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #00FF00;
+}
+
+.cell.alive {
+    background-color: #FFFFFF;
+}
+
+.cell.dead {
+    background-color: #000000;
+}

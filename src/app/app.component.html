@@ -1,0 +1,4 @@
+<button id="startButton" *ngIf="!isRunning" (click)="startGame()">Start</button>
+<button id="pauseButton" *ngIf="isRunning" (click)="pauseGame()">Pause</button>
+<app-field id="field"></app-field>
+<app-options id="options"></app-options>
