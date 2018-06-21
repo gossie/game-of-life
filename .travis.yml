@@ -8,7 +8,12 @@ node_js:
 script:
   - npm run ci:test
   - npm run ci:e2e
-deploy: &heroku
-  provider: heroku
-  app: $HEROKU_APP_NAME
-  api_key: $HEROKU_API_KEY
+deploy:
+    provider: pages
+    skip-cleanup: true
+    github-token: $GAME_OF_LIFE_GITHUB_TOKEN
+    keep-history: true
+    local_dir: build
+    verbose: true
+    on:
+        branch: master
