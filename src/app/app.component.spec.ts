@@ -1,5 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FieldComponent } from './field/field.component';
 import { OptionsComponent } from './options/options.component';
@@ -14,7 +14,7 @@ describe('AppComponent', () => {
                 FieldComponent,
                 OptionsComponent
             ],
-            imports: [ FormsModule ],
+            imports: [ ReactiveFormsModule ],
             providers: [ GameService, OptionsService ]
         }).compileComponents();
     }));
