@@ -1,12 +1,14 @@
-<p>
-    Breite: <input id="width" [(ngModel)]="options.width" (keyup)="onOptionsChange()" [attr.disabled]="gameRunning ? '' : null" />
-</p>
-<p>
-    Höhe: <input id="height" [(ngModel)]="options.height" (keyup)="onOptionsChange()" [attr.disabled]="gameRunning ? '' : null" />
-</p>
-<p>
-    Tick: <input [(ngModel)]="options.tick" (keyup)="onOptionsChange()" />
-</p>
-<p>
-    Random: <input [(ngModel)]="options.random" (keyup)="onOptionsChange()" />
-</p>
+<form [formGroup]="optionsForm">
+    <p>
+        Breite: <input id="width" formControlName="width" [attr.disabled]="gameRunning ? '' : null" />
+    </p>
+    <p>
+        Höhe: <input id="height" formControlName="height" [attr.disabled]="gameRunning ? '' : null" />
+    </p>
+    <p>
+        Tick: <input formControlName="tick" />
+    </p>
+    <p>
+        Random: <input formControlName="random" />
+    </p>
+</form>
