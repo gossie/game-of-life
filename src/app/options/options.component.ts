@@ -32,9 +32,7 @@ export class OptionsComponent implements OnInit {
             tick:   [500, Validators.required ],
             random: [0, Validators.required ]
         });
-        Object.keys(this.optionsForm.controls).forEach(key => {
-            this.optionsForm.get(key).valueChanges.forEach((value: string) => this.notify());
-        });
+        this.optionsForm.valueChanges.subscribe((value: string) => this.notify());
     }
 
     public ngOnInit(): void {
