@@ -19,14 +19,14 @@ describe('GameService', () => {
         inject([GameService], (service: GameService) => {
             let index = 0;
             service.observe().subscribe(event => {
-                if (index == 0) {
+                if (index === 0) {
                     index++;
                     expect(event).toEqual(new GameStartedEvent());
-                } else if (index == 1) {
+                } else if (index === 1) {
                     index++;
                     expect(event).toEqual(new GameRunningEvent(0));
                     service.pauseGame();
-                } else if (index == 2) {
+                } else if (index === 2) {
                     index++;
                     expect(event).toEqual(new GamePausedEvent());
                     done();
