@@ -16,7 +16,6 @@ export class AppComponent {
 
     constructor(optionsService: OptionsService,
                 private gameService: GameService) {
-
         optionsService.observe()
             .pipe(
                 filter(options => options.tick > 0)

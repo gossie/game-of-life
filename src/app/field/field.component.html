@@ -1,4 +1,4 @@
-<div *ngFor="let row of field.getCells()" class="row">
+<div *ngFor="let row of getField().getCells()" class="row">
     <span *ngFor="let cell of row"
             class="cell"
             [class.alive]="cell.status === 'alive'"
