@@ -1,4 +1,4 @@
-import {Unsubscribe} from 'redux';
+import { Unsubscribe } from 'redux';
 
 export interface StoreHolderInterface {
 
