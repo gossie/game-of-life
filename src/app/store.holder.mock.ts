@@ -1,5 +1,5 @@
-import {Unsubscribe} from 'redux';
-import {StoreHolderInterface} from './store.holder.interface';
+import { Unsubscribe } from 'redux';
+import { StoreHolderInterface } from './store.holder.interface';
 
 export class StoreHolderMock implements StoreHolderInterface {
 
