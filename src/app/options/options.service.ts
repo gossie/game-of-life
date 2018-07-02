@@ -3,9 +3,10 @@ import { Observable, Subject } from 'rxjs';
 import { Options } from './options';
 import { optionChange } from './actions';
 import { StoreHolder } from '../store.holder';
+import {OptionsServiceInterface} from './options.service.interface';
 
 @Injectable()
-export class OptionsService {
+export class OptionsService implements OptionsServiceInterface {
 
     private subject: Subject<Options> = new Subject();
     private gameState: Subject<boolean> = new Subject();

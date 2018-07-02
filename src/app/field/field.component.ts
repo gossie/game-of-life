@@ -1,10 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import { StoreHolder } from '../store.holder';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Cell } from './cell';
 import { Field } from './field';
 import { Status } from './status';
-import {FieldService} from './field.service';
-import {Subscription} from 'rxjs/Subscription';
+import { FieldService } from './field.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-field',

@@ -1,13 +1,18 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { GameStartedEvent } from './game-started-event';
-import { GameRunningEvent } from './game-running-event';
-import { GamePausedEvent } from './game-paused-event';
 import { GameService } from './game.service';
+import { GameStartedEvent } from './game-started.event';
+import { GameRunningEvent } from './game-running.event';
+import { GamePausedEvent } from './game-paused.event';
+import {StoreHolder} from '../store.holder';
+import {StoreHolderMock} from '../store.holder.mock';
 
 describe('GameService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [GameService]
+            providers: [
+                { provide: StoreHolder, useClass: StoreHolderMock },
+                GameService
+            ]
         });
     });
 
@@ -19,14 +24,14 @@ describe('GameService', () => {
         inject([GameService], (service: GameService) => {
             let index = 0;
             service.observe().subscribe(event => {
-                if (index == 0) {
+                if (index === 0) {
                     index++;
                     expect(event).toEqual(new GameStartedEvent());
-                } else if (index == 1) {
+                } else if (index === 1) {
                     index++;
                     expect(event).toEqual(new GameRunningEvent(0));
                     service.pauseGame();
-                } else if (index == 2) {
+                } else if (index === 2) {
                     index++;
                     expect(event).toEqual(new GamePausedEvent());
                     done();

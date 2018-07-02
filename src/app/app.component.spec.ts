@@ -5,6 +5,10 @@ import { FieldComponent } from './field/field.component';
 import { OptionsComponent } from './options/options.component';
 import { OptionsService } from './options/options.service';
 import { GameService } from './game/game.service';
+import { OptionsServiceMock } from './options/options.service.mock';
+import { GameServiceMock } from './game/game.service.mock';
+import { FieldService } from './field/field.service';
+import { FieldServiceMock } from './field/field.service.mock';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -15,7 +19,11 @@ describe('AppComponent', () => {
                 OptionsComponent
             ],
             imports: [ ReactiveFormsModule ],
-            providers: [ GameService, OptionsService ]
+            providers: [
+                { provide: GameService, useClass: GameServiceMock },
+                { provide: OptionsService, useClass: OptionsServiceMock },
+                { provide: FieldService, useClass: FieldServiceMock }
+            ]
         }).compileComponents();
     }));
 

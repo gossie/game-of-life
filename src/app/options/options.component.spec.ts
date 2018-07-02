@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OptionsService } from './options.service';
 import { OptionsComponent } from './options.component';
 import { GameService } from '../game/game.service';
+import {OptionsServiceMock} from './options.service.mock';
 
 describe('OptionsComponent', () => {
     let component: OptionsComponent;
@@ -13,8 +14,7 @@ describe('OptionsComponent', () => {
             declarations: [ OptionsComponent ],
             imports: [ ReactiveFormsModule ],
             providers: [
-                OptionsService,
-                GameService
+                { provide: OptionsService, useClass: OptionsServiceMock }
             ]
         })
         .compileComponents();

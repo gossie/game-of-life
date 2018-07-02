@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { combineReducers, createStore, Store, Unsubscribe } from 'redux';
 import { FieldReducers } from './field/field.reducers';
 import {OptionsReducers} from './options/options.reducers';
+import {StoreHolderInterface} from './store.holder.interface';
 
 @Injectable()
-export class StoreHolder {
+export class StoreHolder implements StoreHolderInterface {
 
     private store: Store;
 

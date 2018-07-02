@@ -1,11 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { OptionsService } from './options.service';
+import { StoreHolderMock } from '../store.holder.mock';
+import { StoreHolder } from '../store.holder';
 
 describe('OptionsService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [OptionsService]
+            providers: [
+                { provide: StoreHolder, useClass: StoreHolderMock },
+                OptionsService
+            ]
         });
     });
 

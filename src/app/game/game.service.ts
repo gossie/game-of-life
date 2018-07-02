@@ -3,26 +3,36 @@ import { Observable, Subject, Subscription } from 'rxjs';
 import { interval } from 'rxjs/observable/interval';
 import { StoreHolder } from '../store.holder';
 import { startGame, gameRunning, pauseGame } from './actions'
+import { GameEvent } from './game.event';
+import { GameStartedEvent } from './game-started.event';
+import { GamePausedEvent } from './game-paused.event';
+import {GameRunningEvent} from './game-running.event';
+import {GameServiceInterface} from './game.service.interface';
 
 @Injectable()
-export class GameService {
+export class GameService implements GameServiceInterface {
 
-    // private timer: Subject<GameEvent> = new Subject();
+    private timer: Subject<GameEvent> = new Subject();
     private subscription: Subscription;
 
     constructor(private store: StoreHolder) { }
 
-    // public observe(): Observable {
-    //     return
-    // }
+    public observe(): Observable<GameEvent> {
+        return this.timer.asObservable();
+    }
 
     public startGame(timeout: number): void {
         this.store.dispatch(startGame());
-        this.subscription = interval(timeout).subscribe(value => this.store.dispatch(gameRunning(value)));
+        this.timer.next(new GameStartedEvent());
+        this.subscription = interval(timeout).subscribe(value => {
+            this.store.dispatch(gameRunning(value));
+            this.timer.next(new GameRunningEvent(value));
+        });
     }
 
     public pauseGame(): void {
         this.store.dispatch(pauseGame());
+        this.timer.next(new GamePausedEvent());
         this.subscription.unsubscribe();
     }
 }
