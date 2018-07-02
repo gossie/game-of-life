@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, Store, Unsubscribe } from 'redux';
 import { FieldReducers } from './field/field.reducers';
 
 @Injectable()
 export class StoreHolder {
 
-    private store;
+    private store: Store;
 
     constructor(private fieldReducers: FieldReducers) {
         this.store = createStore(combineReducers(fieldReducers.getReducers()));
@@ -15,7 +15,11 @@ export class StoreHolder {
         this.store.dispatch(action);
     }
 
-    public getState() {
+    public getState(): any {
         return this.store.getState();
+    }
+
+    public subscribe(listener: () => void): Unsubscribe {
+        return this.store.subscribe(listener);
     }
 }

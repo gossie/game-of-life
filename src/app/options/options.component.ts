@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OptionsService } from './options.service';
 import { Options } from './options';
-import { GameService } from '../game/game.service';
-import { StoreHolder } from '../store.holder';
 
 @Component({
     selector: 'app-options',
@@ -15,8 +13,7 @@ export class OptionsComponent implements OnInit {
     public optionsForm: FormGroup;
 
     constructor(private optionsService: OptionsService,
-                private fb: FormBuilder,
-                private store: StoreHolder) {
+                private fb: FormBuilder) {
         this.createForm();
     }
 
@@ -34,10 +31,6 @@ export class OptionsComponent implements OnInit {
         this.notify();
     }
 
-    public onOptionsChange(): void {
-        this.notify();
-    }
-
     private notify(): void {
         const options: Options = {
             width:  parseInt(this.optionsForm.get('width').value),
@@ -49,6 +42,7 @@ export class OptionsComponent implements OnInit {
     }
 
     public isGameRunning(): boolean {
-        return this.store.getState().gameRunning;
+        // TODO
+        return false;
     }
 }

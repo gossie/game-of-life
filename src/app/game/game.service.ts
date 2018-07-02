@@ -6,10 +6,15 @@ import { startGame, gameRunning, pauseGame } from './actions'
 
 @Injectable()
 export class GameService {
-    
+
+    // private timer: Subject<GameEvent> = new Subject();
     private subscription: Subscription;
 
     constructor(private store: StoreHolder) { }
+
+    // public observe(): Observable {
+    //     return
+    // }
 
     public startGame(timeout: number): void {
         this.store.dispatch(startGame());

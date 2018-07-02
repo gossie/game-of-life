@@ -23,7 +23,7 @@ export function startGame(): StartAction {
 
 export function gameRunning(tick: number): RunningAction {
     return {
-        type: PAUSE_GAME,
+        type: GAME_RUNNING,
         tick: tick
     };
 }

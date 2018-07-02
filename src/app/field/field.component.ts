@@ -1,23 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { StoreHolder } from '../store.holder';
 import { Cell } from './cell';
 import { Field } from './field';
 import { Status } from './status';
+import {FieldService} from './field.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-field',
     templateUrl: './field.component.html',
     styleUrls: ['./field.component.css']
 })
-export class FieldComponent implements OnInit {
+export class FieldComponent implements OnInit, OnDestroy {
 
-    constructor(private store: StoreHolder) {}
+    public field: Field;
 
-    ngOnInit() {
+    private subscriptions: Array<Subscription> = [];
+
+    constructor(private fieldService: FieldService) {}
+
+    public ngOnInit(): void {
+        this.subscriptions.push(this.fieldService.observe().subscribe(field => this.field = field));
     }
 
-    public getField(): Field {
-        return this.store.getState().field
+    public ngOnDestroy(): void {
+        this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
 
     public onSelect(cell: Cell): void {
