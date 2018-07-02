@@ -23,7 +23,7 @@ describe('GameService', () => {
     it('should listen to events', done => {
         inject([GameService], (service: GameService) => {
             let index = 0;
-            service.observe().subscribe(event => {
+            service.observeGameState().subscribe(event => {
                 if (index === 0) {
                     index++;
                     expect(event).toEqual(new GameStartedEvent());

@@ -8,17 +8,23 @@ import { GameStartedEvent } from './game-started.event';
 import { GamePausedEvent } from './game-paused.event';
 import {GameRunningEvent} from './game-running.event';
 import {GameServiceInterface} from './game.service.interface';
+import {Options} from '../options/options';
 
 @Injectable()
 export class GameService implements GameServiceInterface {
 
     private timer: Subject<GameEvent> = new Subject();
+    private options: Subject<Options> = new Subject();
     private subscription: Subscription;
 
     constructor(private store: StoreHolder) { }
 
-    public observe(): Observable<GameEvent> {
+    public observeGameState(): Observable<GameEvent> {
         return this.timer.asObservable();
+    }
+
+    public observeOptions(): Observable<Options> {
+        return this.options.asObservable();
     }
 
     public startGame(timeout: number): void {

@@ -14,9 +14,8 @@ export class AppComponent {
 
     private timeout: number;
 
-    constructor(optionsService: OptionsService,
-                private gameService: GameService) {
-        optionsService.observe()
+    constructor(private gameService: GameService) {
+        gameService.observeOptions()
             .pipe(
                 filter(options => options.tick > 0)
             )
