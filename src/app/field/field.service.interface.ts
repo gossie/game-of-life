@@ -1,5 +1,5 @@
-import {Observable} from 'rxjs/Observable';
-import {Field} from './field';
+import { Observable } from 'rxjs/Observable';
+import { Field } from './field';
 
 export interface FieldServiceInterface {
 
