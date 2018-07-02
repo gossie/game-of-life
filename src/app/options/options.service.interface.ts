@@ -1,5 +1,5 @@
-import {Options} from './options';
-import {Observable} from '../../../node_modules/rxjs';
+import { Options } from './options';
+import { Observable } from '../../../node_modules/rxjs';
 
 export interface OptionsServiceInterface {
 
