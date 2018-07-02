@@ -3,8 +3,8 @@ import { GameService } from './game.service';
 import { GameStartedEvent } from './game-started.event';
 import { GameRunningEvent } from './game-running.event';
 import { GamePausedEvent } from './game-paused.event';
-import {StoreHolder} from '../store.holder';
-import {StoreHolderMock} from '../store.holder.mock';
+import { StoreHolder } from '../store.holder';
+import { StoreHolderMock } from '../store.holder.mock';
 
 describe('GameService', () => {
     beforeEach(() => {
