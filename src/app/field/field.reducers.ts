@@ -46,7 +46,7 @@ export class FieldReducers {
 
     public getReducers() {
         return {
-            onTick: FieldReducers.onTick
+            tick: FieldReducers.onTick
         };
     }
 }

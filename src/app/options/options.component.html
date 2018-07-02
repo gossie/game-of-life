@@ -1,9 +1,9 @@
 <form [formGroup]="optionsForm">
     <p>
-        Breite: <input id="width" formControlName="width" [attr.disabled]="isGameRunning() ? '' : null" />
+        Breite: <input id="width" formControlName="width" [attr.disabled]="gameRunning ? '' : null" />
     </p>
     <p>
-        Höhe: <input id="height" formControlName="height" [attr.disabled]="isGameRunning() ? '' : null" />
+        Höhe: <input id="height" formControlName="height" [attr.disabled]="gameRunning ? '' : null" />
     </p>
     <p>
         Tick: <input id="tick" formControlName="tick" />

@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { combineReducers, createStore, Store, Unsubscribe } from 'redux';
 import { FieldReducers } from './field/field.reducers';
+import {OptionsReducers} from './options/options.reducers';
 
 @Injectable()
 export class StoreHolder {
 
     private store: Store;
 
-    constructor(private fieldReducers: FieldReducers) {
-        this.store = createStore(combineReducers(fieldReducers.getReducers()));
+    constructor(private fieldReducers: FieldReducers,
+                private optionsReducers: OptionsReducers) {
+        const field = fieldReducers.getReducers();
+        const options = optionsReducers.getReducers();
+        this.store = createStore(combineReducers({...field, ...options}));
     }
 
     public dispatch(action): void {

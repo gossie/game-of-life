@@ -11,10 +11,10 @@ import { Options } from './options';
 export class OptionsComponent implements OnInit {
 
     public optionsForm: FormGroup;
+    public gameRunning: boolean;
 
     constructor(private optionsService: OptionsService,
                 private fb: FormBuilder) {
-        this.createForm();
     }
 
     private createForm(): void {
@@ -28,6 +28,8 @@ export class OptionsComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+        this.optionsService.observeGameState().subscribe(running => this.gameRunning = running);
+        this.createForm();
         this.notify();
     }
 
@@ -39,10 +41,5 @@ export class OptionsComponent implements OnInit {
             random: parseInt(this.optionsForm.get('random').value)
         };
         this.optionsService.notify(options);
-    }
-
-    public isGameRunning(): boolean {
-        // TODO
-        return false;
     }
 }
