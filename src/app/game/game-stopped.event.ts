@@ -1,5 +1,6 @@
-import {GameEvent} from './game-event';
+import { GameEvent } from './game.event';
 
 export class GameStoppedEvent implements GameEvent {
 
 }
+

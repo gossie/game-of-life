@@ -1,47 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { GameService } from '../game/game.service';
-import { OptionsService } from '../options/options.service';
-import { Options } from '../options/options';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Cell } from './cell';
 import { Field } from './field';
 import { Status } from './status';
+import { FieldService } from './field.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-field',
     templateUrl: './field.component.html',
     styleUrls: ['./field.component.css']
 })
-export class FieldComponent implements OnInit {
+export class FieldComponent implements OnInit, OnDestroy {
 
-    field: Field;
+    public field: Field;
 
-    constructor(private gameService: GameService,
-                private optionsService: OptionsService) {
+    private subscriptions: Array<Subscription> = [];
+
+    constructor(private fieldService: FieldService) {}
+
+    public ngOnInit(): void {
+        this.subscriptions.push(this.fieldService.observe().subscribe(field => this.field = field));
     }
 
-    ngOnInit() {
-        this.gameService.observe()
-            .subscribe(tick => this.onTick());
-
-        this.optionsService.observe()
-            .subscribe(options => this.onOptionsChange(options));
-    }
-
-    private onTick(): void {
-        this.field.round();
-    }
-
-    private checkOptions(options: Options): boolean {
-        return this.field === undefined
-            || (options.width > 0 && options.width !== this.field.getCells()[0].length)
-            || (options.height > 0 && options.height !== this.field.getCells().length);
-    }
-
-    private onOptionsChange(options: Options): void {
-        if (this.checkOptions(options)) {
-            this.field = new Field(options.width, options.height);
-        }
-        this.field.setMaxNumberOfNewSamples(options.random);
+    public ngOnDestroy(): void {
+        this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
 
     public onSelect(cell: Cell): void {

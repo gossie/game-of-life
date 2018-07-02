@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OptionsComponent } from './options.component';
+import { OptionsReducers } from './options.reducers';
 import { OptionsService } from './options.service';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { OptionsService } from './options.service';
         OptionsComponent
     ],
     providers: [
-        OptionsService
+        OptionsService,
+        OptionsReducers
     ]
 })
 export class OptionsModule { }

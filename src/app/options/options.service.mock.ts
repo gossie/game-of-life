@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Options } from './options';
+import { OptionsServiceInterface } from './options.service.interface';
 
 @Injectable()
-export class OptionsServiceMock {
+export class OptionsServiceMock implements OptionsServiceInterface {
 
-    constructor() {}
-
-    public observe(): Observable<Options> {
+    observeGameState(): Observable<boolean> {
         return new Observable(() => {});
     }
 
-    public notify(options: Options): void {}
+    notify(options: Options): void {}
 
 }

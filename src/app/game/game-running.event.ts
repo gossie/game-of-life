@@ -1,4 +1,4 @@
-import {GameEvent} from './game-event';
+import { GameEvent } from './game.event';
 
 export class GameRunningEvent implements GameEvent {
 
