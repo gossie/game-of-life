@@ -6,9 +6,9 @@ import { startGame, gameRunning, pauseGame } from './actions'
 import { GameEvent } from './game.event';
 import { GameStartedEvent } from './game-started.event';
 import { GamePausedEvent } from './game-paused.event';
-import {GameRunningEvent} from './game-running.event';
-import {GameServiceInterface} from './game.service.interface';
-import {Options} from '../options/options';
+import { GameRunningEvent } from './game-running.event';
+import { GameServiceInterface } from './game.service.interface';
+import { Options } from '../options/options';
 
 @Injectable()
 export class GameService implements GameServiceInterface {
