@@ -2,8 +2,8 @@ import { TestBed, inject } from '@angular/core/testing';
 import { OptionsService } from './options.service';
 import { StoreHolderMock } from '../store.holder.mock';
 import { StoreHolder } from '../store.holder';
-import {OPTION_CHANGE} from './actions';
-import {Options} from './options';
+import { OPTION_CHANGE } from './actions';
+import { Options } from './options';
 import Spy = jasmine.Spy;
 
 describe('OptionsService', () => {
