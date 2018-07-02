@@ -1,6 +1,6 @@
-import {Observable} from '../../../node_modules/rxjs';
-import {GameEvent} from './game.event';
-import {Options} from '../options/options';
+import { Observable } from '../../../node_modules/rxjs';
+import { GameEvent } from './game.event';
+import { Options } from '../options/options';
 
 export interface GameServiceInterface {
 
