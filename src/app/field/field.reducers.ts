@@ -14,10 +14,10 @@ export class FieldReducers {
 
     private static onTick(state: State = {}, action): State {
         switch (action.type) {
+            case OPTION_CHANGE:
+                return FieldReducers.onOptionsChange(state, action.options);
             case GAME_RUNNING:
-                if (state.field) {
-                    state.field.round();
-                }
+                state.field.round();
                 return state;
             default:
                 return state;
@@ -25,21 +25,17 @@ export class FieldReducers {
 
     }
 
-    private static onOptionsChange(state: State = {}, action): State {
-        if (action.type === OPTION_CHANGE) {
-            let field: Field = state.field;
-            if (FieldReducers.checkOptions(action.options, field)) {
-                field = new Field(action.options.width, action.options.height);
-            }
-            field.setMaxNumberOfNewSamples(action.options.random);
-
-            return {
-                field: field,
-                options: action.options
-            };
-        } else {
-            return state;
+    private static onOptionsChange(state: State = {}, options: Options): State {
+        let field: Field = state.field;
+        if (FieldReducers.checkOptions(options, field)) {
+            field = new Field(options.width, options.height);
         }
+        field.setMaxNumberOfNewSamples(options.random);
+
+        return {
+            field: field,
+            options: options
+        };
     }
 
     private static checkOptions(options: Options, field: Field): boolean {
@@ -50,8 +46,7 @@ export class FieldReducers {
 
     public getReducers() {
         return {
-            onTick: FieldReducers.onTick,
-            onOptionsChange: FieldReducers.onOptionsChange
+            onTick: FieldReducers.onTick
         };
     }
 }

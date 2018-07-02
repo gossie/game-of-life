@@ -11,7 +11,7 @@ export class FieldService {
 
     constructor(store: StoreHolder) {
         store.subscribe(() => {
-            this.fields.next(store.getState().onOptionsChange.field);
+            this.fields.next(store.getState().onTick.field);
         });
     }
 
