@@ -20,10 +20,12 @@ export class AppComponent {
                 filter(options => options.tick > 0)
             )
             .subscribe(options => {
-                this.timeout = options.tick;
-                if (this.isRunning) {
-                    this.pauseGame();
-                    this.startGame();
+                if (this.timeout !== options.tick) {
+                    this.timeout = options.tick;
+                    if (this.isRunning) {
+                        this.pauseGame();
+                        this.startGame();
+                    }
                 }
             });
     }

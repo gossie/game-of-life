@@ -17,7 +17,9 @@ export class GameService implements GameServiceInterface {
     private options: Subject<Options> = new Subject();
     private subscription: Subscription;
 
-    constructor(private store: StoreHolder) { }
+    constructor(private store: StoreHolder) {
+        store.subscribe(() => this.options.next(store.getState().tick.options));
+    }
 
     public observeGameState(): Observable<GameEvent> {
         return this.timer.asObservable();
