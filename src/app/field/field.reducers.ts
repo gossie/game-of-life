@@ -46,7 +46,7 @@ export class FieldReducers implements Reducer {
     private static handleTick(state: State): State {
         state.pastFields.push(state.currentField);
         if (state.pastFields.length > FieldReducers.MAX_NUMBER_OF_FIELDS) {
-            state.pastFields.splice(1);
+            state.pastFields.splice(0, 1);
         }
         return {
             pastFields: state.pastFields,
