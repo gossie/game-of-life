@@ -40,15 +40,23 @@ export class GameService implements GameServiceInterface {
 
     public pauseGame(): void {
         this.store.dispatch(pauseGame());
-        this.timer.next(new GamePausedEvent());
+        this.timer.next(this.createPauseEvent());
         this.subscription.unsubscribe();
     }
 
     public next(): void {
         this.store.dispatch(next());
+        this.timer.next(this.createPauseEvent());
     }
 
     public prev(): void {
         this.store.dispatch(prev());
+        this.timer.next(this.createPauseEvent());
+    }
+
+    private createPauseEvent(): GamePausedEvent {
+        const prevAvailable: boolean = this.store.getState().tick.pastFields.length !== 0;
+        const nextAvailable: boolean = this.store.getState().tick.futureFields.length !== 0;
+        return new GamePausedEvent(prevAvailable, nextAvailable);
     }
 }

@@ -21,7 +21,14 @@ describe('GameService', () => {
     }));
 
     it('should listen to events', done => {
-        inject([GameService], (service: GameService) => {
+        inject([GameService, StoreHolder], (service: GameService, store: StoreHolder) => {
+            spyOn(store, 'getState').and.returnValue({
+                tick: {
+                    pastFields: [],
+                    futureFields: []
+                }
+            });
+
             let index = 0;
             service.observeGameState().subscribe(event => {
                 if (index === 0) {
@@ -33,7 +40,7 @@ describe('GameService', () => {
                     service.pauseGame();
                 } else if (index === 2) {
                     index++;
-                    expect(event).toEqual(new GamePausedEvent());
+                    expect(event).toEqual(new GamePausedEvent(false, false));
                     done();
                 }
             });

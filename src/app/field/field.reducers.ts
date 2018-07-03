@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GAME_RUNNING } from '../game/actions';
+import { START_GAME, GAME_RUNNING, NEXT, PREV } from '../game/actions';
 import { OPTION_CHANGE } from '../options/actions';
 import { Field } from './field';
 import { Options } from '../options/options';
@@ -20,14 +20,29 @@ export class FieldReducers {
         switch (action.type) {
             case OPTION_CHANGE:
                 return FieldReducers.onOptionsChange(state, action.options);
+            case START_GAME:
+                return FieldReducers.handleStart(state);
             case GAME_RUNNING:
-                return FieldReducers.bla(state);
+                return FieldReducers.handleTick(state);
+            case NEXT:
+                return FieldReducers.handleNext(state);
+            case PREV:
+                return FieldReducers.handlePrev(state);
             default:
                 return state;
         }
     }
 
-    private static bla(state: State): State {
+    private static handleStart(state: State): State {
+        return {
+            pastFields: state.pastFields,
+            currentField: state.currentField,
+            futureFields: [],
+            options: state.options
+        };
+    }
+
+    private static handleTick(state: State): State {
         state.pastFields.push(state.currentField);
         if (state.pastFields.length > FieldReducers.MAX_NUMBER_OF_FIELDS) {
             state.pastFields.splice(1);
@@ -35,6 +50,36 @@ export class FieldReducers {
         return {
             pastFields: state.pastFields,
             currentField: state.currentField.round(),
+            futureFields: state.futureFields,
+            options: state.options
+        };
+    }
+
+    private static handleNext(state: State): State {
+        if (state.futureFields.length === 0) {
+            return state;
+        }
+
+        state.pastFields.push(state.currentField);
+        const newCurrentField: Field = state.futureFields.shift();
+        return {
+            pastFields: state.pastFields,
+            currentField: newCurrentField,
+            futureFields: state.futureFields,
+            options: state.options
+        };
+    }
+
+    private static handlePrev(state: State): State {
+        if (state.pastFields.length === 0) {
+            return state;
+        }
+
+        state.futureFields.unshift(state.currentField);
+        const newCurrentField: Field = state.pastFields.pop();
+        return {
+            pastFields: state.pastFields,
+            currentField: newCurrentField,
             futureFields: state.futureFields,
             options: state.options
         };

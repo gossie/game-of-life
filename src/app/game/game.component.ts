@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { filter } from 'rxjs/operators';
 import { GameService } from './game.service';
+import { Options } from '../options/options';
+import { GamePausedEvent } from './game-paused.event';
 
 @Component({
     selector: 'app-game',
@@ -9,7 +11,9 @@ import { GameService } from './game.service';
 })
 export class GameComponent {
 
-    isRunning = false;
+    isRunning: boolean;
+    nextAvailable: boolean;
+    prevAvailable: boolean;
 
     private timeout: number;
 
@@ -18,15 +22,28 @@ export class GameComponent {
             .pipe(
                 filter(options => options.tick > 0)
             )
-            .subscribe(options => {
-                if (this.timeout !== options.tick) {
-                    this.timeout = options.tick;
-                    if (this.isRunning) {
-                        this.pauseGame();
-                        this.startGame();
-                    }
-                }
-            });
+            .subscribe(options => this.handleOptionChange(options));
+
+        gameService.observeGameState()
+            .pipe(
+                filter(event => event instanceof GamePausedEvent)
+            )
+            .subscribe((event: GamePausedEvent) => this.handlePauseEvent(event));
+    }
+
+    private handleOptionChange(options: Options): void {
+        if (this.timeout !== options.tick) {
+            this.timeout = options.tick;
+            if (this.isRunning) {
+                this.pauseGame();
+                this.startGame();
+            }
+        }
+    }
+
+    private handlePauseEvent(event: GamePausedEvent): void {
+        this.prevAvailable = event.isPrevAvailable();
+        this.nextAvailable = event.isNextAvailable();
     }
 
     public startGame(): void {
