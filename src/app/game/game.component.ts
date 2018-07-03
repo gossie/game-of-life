@@ -37,6 +37,13 @@ export class GameComponent {
     public pauseGame(): void {
         this.gameService.pauseGame();
         this.isRunning = false;
+    }
 
+    public next(): void {
+        this.gameService.next();
+    }
+
+    public prev(): void {
+        this.gameService.prev();
     }
 }

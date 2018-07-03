@@ -3,16 +3,23 @@ import { Status } from './status';
 
 export class Field {
 
-    private cells: Cell[][];
-    private maxNumberOfNewSamples: number;
+    private readonly cells: Cell[][];
+    private readonly maxNumberOfNewSamples: number;
 
-    constructor(width: number, height: number) {
-        this.cells = [];
-        for (let y = 0; y < height; y++) {
-            this.cells[y] = [];
-            for (let x = 0; x < width; x++) {
-                this.cells[y][x] = new Cell(x, y, Status.DEAD);
+    constructor(maxNumberOfNewSamples: number, cells: Cell[][])
+    constructor(maxNumberOfNewSamples: number, width: number, height: number)
+    constructor(maxNumberOfNewSamples: number, cellsOrWidth: any, height?: number) {
+        this.maxNumberOfNewSamples = maxNumberOfNewSamples;
+        if (typeof cellsOrWidth === 'number') {
+            this.cells = [];
+            for (let y = 0; y < height; y++) {
+                this.cells[y] = [];
+                for (let x = 0; x < cellsOrWidth; x++) {
+                    this.cells[y][x] = new Cell(x, y, Status.DEAD);
+                }
             }
+        } else {
+            this.cells = cellsOrWidth;
         }
     }
 
@@ -51,7 +58,7 @@ export class Field {
         }
     }
 
-    public round(): void {
+    public round(): Field {
         const newCells: Cell[][] = [];
         for (let y = 0; y < this.cells.length; y++) {
             newCells[y] = [];
@@ -79,14 +86,14 @@ export class Field {
             newCells[y][x] = new Cell(x, y, Status.ALIVE);
         }
 
-        this.cells = newCells;
+        return new Field(this.maxNumberOfNewSamples, newCells);
     }
 
     public getCells(): Cell[][] {
         return this.cells;
     }
 
-    public setMaxNumberOfNewSamples(maxNumberOfNewSamples: number) {
-        this.maxNumberOfNewSamples = maxNumberOfNewSamples;
-    }
+    // public setMaxNumberOfNewSamples(maxNumberOfNewSamples: number) {
+    //     this.maxNumberOfNewSamples = maxNumberOfNewSamples;
+    // }
 }

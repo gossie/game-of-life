@@ -22,7 +22,7 @@ describe('FieldComponent', () => {
     }));
 
     it('should initialize cells', inject([FieldService], (service: FieldService) => {
-        const field: Field = new Field(100, 75);
+        const field: Field = new Field(0, 100, 75);
         spyOn(service, 'observe').and.returnValue(Observable.from([field]));
 
         fixture = TestBed.createComponent(FieldComponent);
@@ -44,7 +44,7 @@ describe('FieldComponent', () => {
     }));
 
     it('should change cells status', inject([FieldService], (service: FieldService) => {
-        const field: Field = new Field(100, 75);
+        const field: Field = new Field(0, 100, 75);
         spyOn(service, 'observe').and.returnValue(Observable.from([field]));
 
         fixture = TestBed.createComponent(FieldComponent);

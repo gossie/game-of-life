@@ -5,35 +5,51 @@ import { Field } from './field';
 import { Options } from '../options/options';
 
 interface State {
-    field?: Field;
+    pastFields: Array<Field>;
+    currentField?: Field;
+    futureFields: Array<Field>;
     options?: Options;
 }
 
 @Injectable()
 export class FieldReducers {
 
-    private static onTick(state: State = {}, action): State {
+    private static readonly MAX_NUMBER_OF_FIELDS = 10;
+
+    private static onTick(state: State = {pastFields: [], futureFields: []}, action): State {
         switch (action.type) {
             case OPTION_CHANGE:
                 return FieldReducers.onOptionsChange(state, action.options);
             case GAME_RUNNING:
-                state.field.round();
-                return state;
+                return FieldReducers.bla(state);
             default:
                 return state;
         }
-
     }
 
-    private static onOptionsChange(state: State = {}, options: Options): State {
-        let field: Field = state.field;
-        if (FieldReducers.checkOptions(options, field)) {
-            field = new Field(options.width, options.height);
+    private static bla(state: State): State {
+        state.pastFields.push(state.currentField);
+        if (state.pastFields.length > FieldReducers.MAX_NUMBER_OF_FIELDS) {
+            state.pastFields.splice(1);
         }
-        field.setMaxNumberOfNewSamples(options.random);
+        return {
+            pastFields: state.pastFields,
+            currentField: state.currentField.round(),
+            futureFields: state.futureFields,
+            options: state.options
+        };
+    }
+
+    private static onOptionsChange(state: State = {pastFields: [], futureFields: []}, options: Options): State {
+        let field: Field = state.currentField;
+        if (FieldReducers.checkOptions(options, field)) {
+            field = new Field(options.random, options.width, options.height);
+        }
 
         return {
-            field: field,
+            pastFields: state.pastFields,
+            currentField: field,
+            futureFields: state.futureFields,
             options: options
         };
     }

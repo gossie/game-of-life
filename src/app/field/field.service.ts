@@ -10,7 +10,7 @@ export class FieldService {
     private fields: Subject<Field> = new Subject();
 
     constructor(store: StoreHolder) {
-        store.subscribe(() => this.fields.next(store.getState().tick.field));
+        store.subscribe(() => this.fields.next(store.getState().tick.currentField));
     }
 
     public observe(): Observable<Field> {

@@ -11,9 +11,19 @@ interface PauseAction {
     type: string;
 }
 
+interface NextAction {
+    type: string;
+}
+
+interface PrevAction {
+    type: string;
+}
+
 export const START_GAME = 'startGame';
 export const GAME_RUNNING = 'gameRunning';
 export const PAUSE_GAME = 'pauseGame';
+export const NEXT = 'next';
+export const PREV = 'prev';
 
 export function startGame(): StartAction {
     return {
@@ -31,5 +41,17 @@ export function gameRunning(tick: number): RunningAction {
 export function pauseGame(): PauseAction {
     return {
         type: PAUSE_GAME
+    };
+}
+
+export function next(): PauseAction {
+    return {
+        type: NEXT
+    };
+}
+
+export function prev(): PauseAction {
+    return {
+        type: PREV
     };
 }
