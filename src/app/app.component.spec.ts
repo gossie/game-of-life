@@ -9,12 +9,14 @@ import { OptionsServiceMock } from './options/options.service.mock';
 import { GameServiceMock } from './game/game.service.mock';
 import { FieldService } from './field/field.service';
 import { FieldServiceMock } from './field/field.service.mock';
+import { GameComponent } from './game/game.component';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
+                GameComponent,
                 FieldComponent,
                 OptionsComponent
             ],

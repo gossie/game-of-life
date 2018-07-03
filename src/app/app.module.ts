@@ -14,7 +14,6 @@ import { GameModule } from './game/game.module';
     ],
     imports: [
         BrowserModule,
-        FormsModule,
         GameModule,
         OptionsModule,
         FieldModule
