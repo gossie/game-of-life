@@ -3,7 +3,7 @@ import { START_GAME, GAME_RUNNING, NEXT, PREV } from '../game/actions';
 import { OPTION_CHANGE } from '../options/actions';
 import { Field } from './field';
 import { Options } from '../options/options';
-import { Reducer } from '../reducer.interface';
+import { Reducers } from '../reducer.interface';
 
 interface State {
     pastFields: Array<Field>;
@@ -13,7 +13,7 @@ interface State {
 }
 
 @Injectable()
-export class FieldReducers implements Reducer {
+export class FieldReducers implements Reducers {
 
     private static readonly MAX_NUMBER_OF_FIELDS = 10;
 

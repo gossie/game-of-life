@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { START_GAME, PAUSE_GAME } from '../game/actions';
-import { Reducer } from '../reducer.interface';
+import { Reducers } from '../reducer.interface';
 
 interface State {
     gameRunning: boolean;
 }
 
 @Injectable()
-export class OptionsReducers implements Reducer {
+export class OptionsReducers implements Reducers {
 
     private static onGameEvent(state: State = { gameRunning: false }, action): State {
         switch (action.type) {
