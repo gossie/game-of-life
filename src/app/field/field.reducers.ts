@@ -17,21 +17,20 @@ export class FieldReducers implements Reducers {
 
     private static readonly MAX_NUMBER_OF_FIELDS = 10;
 
+    private static readonly REDUCERS: Map<string, any> = new Map([
+        [OPTION_CHANGE, (state, options) => FieldReducers.onOptionsChange(state, options)],
+        [START_GAME, (state, options) => FieldReducers.handleStart(state)],
+        [GAME_RUNNING, (state, options) => FieldReducers.handleTick(state)],
+        [NEXT, (state, options) => FieldReducers.handleNext(state)],
+        [PREV, (state, options) => FieldReducers.handlePrev(state)]
+    ]);
+
     private static onTick(state: State = {pastFields: [], futureFields: []}, action): State {
-        switch (action.type) {
-            case OPTION_CHANGE:
-                return FieldReducers.onOptionsChange(state, action.options);
-            case START_GAME:
-                return FieldReducers.handleStart(state);
-            case GAME_RUNNING:
-                return FieldReducers.handleTick(state);
-            case NEXT:
-                return FieldReducers.handleNext(state);
-            case PREV:
-                return FieldReducers.handlePrev(state);
-            default:
-                return state;
+        const reducer: any = FieldReducers.REDUCERS.get(action.type);
+        if (reducer === undefined) {
+            return state;
         }
+        return reducer(state, action.options);
     }
 
     private static handleStart(state: State): State {
