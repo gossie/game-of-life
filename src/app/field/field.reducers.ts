@@ -91,6 +91,7 @@ export class FieldReducers implements Reducer {
         if (FieldReducers.checkOptions(options, field)) {
             field = new Field(options.random, options.width, options.height);
         }
+        field = field.setMaxNumberOfNewSamples(options.random);
 
         return {
             pastFields: state.pastFields,

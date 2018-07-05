@@ -93,7 +93,7 @@ export class Field {
         return this.cells;
     }
 
-    // public setMaxNumberOfNewSamples(maxNumberOfNewSamples: number) {
-    //     this.maxNumberOfNewSamples = maxNumberOfNewSamples;
-    // }
+    public setMaxNumberOfNewSamples(maxNumberOfNewSamples: number): Field {
+        return new Field(maxNumberOfNewSamples, this.cells);
+    }
 }
