@@ -3,7 +3,7 @@ import { START_GAME, GAME_RUNNING, NEXT, PREV } from '../game/actions';
 import { OPTION_CHANGE } from '../options/actions';
 import { Field } from './field';
 import { Options } from '../options/options';
-import { Reducer } from '../reducer.interface';
+import { Reducers } from '../reducer.interface';
 
 interface State {
     pastFields: Array<Field>;
@@ -13,25 +13,24 @@ interface State {
 }
 
 @Injectable()
-export class FieldReducers implements Reducer {
+export class FieldReducers implements Reducers {
 
     private static readonly MAX_NUMBER_OF_FIELDS = 10;
 
+    private static readonly REDUCERS: Map<string, any> = new Map([
+        [OPTION_CHANGE, (state, options) => FieldReducers.onOptionsChange(state, options)],
+        [START_GAME, (state, options) => FieldReducers.handleStart(state)],
+        [GAME_RUNNING, (state, options) => FieldReducers.handleTick(state)],
+        [NEXT, (state, options) => FieldReducers.handleNext(state)],
+        [PREV, (state, options) => FieldReducers.handlePrev(state)]
+    ]);
+
     private static onTick(state: State = {pastFields: [], futureFields: []}, action): State {
-        switch (action.type) {
-            case OPTION_CHANGE:
-                return FieldReducers.onOptionsChange(state, action.options);
-            case START_GAME:
-                return FieldReducers.handleStart(state);
-            case GAME_RUNNING:
-                return FieldReducers.handleTick(state);
-            case NEXT:
-                return FieldReducers.handleNext(state);
-            case PREV:
-                return FieldReducers.handlePrev(state);
-            default:
-                return state;
+        const reducer: any = FieldReducers.REDUCERS.get(action.type);
+        if (reducer === undefined) {
+            return state;
         }
+        return reducer(state, action.options);
     }
 
     private static handleStart(state: State): State {
@@ -91,6 +90,7 @@ export class FieldReducers implements Reducer {
         if (FieldReducers.checkOptions(options, field)) {
             field = new Field(options.random, options.width, options.height);
         }
+        field = field.setMaxNumberOfNewSamples(options.random);
 
         return {
             pastFields: state.pastFields,

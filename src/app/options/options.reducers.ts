@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
-import { START_GAME, PAUSE_GAME } from '../game/actions';
-import { Reducer } from '../reducer.interface';
+import { PAUSE_GAME, START_GAME } from '../game/actions';
+import { Reducers } from '../reducer.interface';
 
 interface State {
     gameRunning: boolean;
 }
 
 @Injectable()
-export class OptionsReducers implements Reducer {
+export class OptionsReducers implements Reducers {
+
+    private static readonly STATES: Map<string, any> = new Map([
+        [START_GAME, { gameRunning: true }],
+        [PAUSE_GAME, { gameRunning: false }]
+    ]);
 
     private static onGameEvent(state: State = { gameRunning: false }, action): State {
-        switch (action.type) {
-            case START_GAME: return { gameRunning: true };
-            case PAUSE_GAME: return { gameRunning: false };
-            default: return state;
+        const newState: any = OptionsReducers.STATES.get(action.type);
+        if (newState === undefined) {
+            return state;
         }
+        return newState;
     }
 
     public getReducers() {
