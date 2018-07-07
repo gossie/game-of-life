@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { START_GAME, GAME_RUNNING, NEXT, PREV } from '../game/actions';
+import { START_GAME, GAME_RUNNING, NEXT, PREV, CLEAR_FIELD } from '../game/actions';
 import { OPTION_CHANGE } from '../options/actions';
 import { Field } from './field';
 import { Options } from '../options/options';
@@ -22,7 +22,8 @@ export class FieldReducers implements Reducers {
         [START_GAME, (state, options) => FieldReducers.handleStart(state)],
         [GAME_RUNNING, (state, options) => FieldReducers.handleTick(state)],
         [NEXT, (state, options) => FieldReducers.handleNext(state)],
-        [PREV, (state, options) => FieldReducers.handlePrev(state)]
+        [PREV, (state, options) => FieldReducers.handlePrev(state)],
+        [CLEAR_FIELD, (state, options) => FieldReducers.handleClear(state)]
     ]);
 
     private static onTick(state: State = {pastFields: [], futureFields: []}, action): State {
@@ -80,6 +81,19 @@ export class FieldReducers implements Reducers {
         return {
             pastFields: state.pastFields,
             currentField: newCurrentField,
+            futureFields: state.futureFields,
+            options: state.options
+        };
+    }
+
+    private static handleClear(state: State): State {
+        state.pastFields.push(state.currentField);
+        if (state.pastFields.length > FieldReducers.MAX_NUMBER_OF_FIELDS) {
+            state.pastFields.splice(0, 1);
+        }
+        return {
+            pastFields: state.pastFields,
+            currentField: state.currentField.clear(),
             futureFields: state.futureFields,
             options: state.options
         };

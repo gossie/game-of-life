@@ -56,6 +56,10 @@ export class GameComponent {
         this.isRunning = false;
     }
 
+    public clear(): void {
+        this.gameService.clear();
+    }
+
     public next(): void {
         this.gameService.next();
     }

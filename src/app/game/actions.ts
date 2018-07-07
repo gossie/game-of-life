@@ -19,11 +19,16 @@ interface PrevAction {
     type: string;
 }
 
+interface ClearAction {
+    type: string;
+}
+
 export const START_GAME = 'startGame';
 export const GAME_RUNNING = 'gameRunning';
 export const PAUSE_GAME = 'pauseGame';
 export const NEXT = 'next';
 export const PREV = 'prev';
+export const CLEAR_FIELD = 'clear';
 
 export function startGame(): StartAction {
     return {
@@ -53,5 +58,11 @@ export function next(): PauseAction {
 export function prev(): PauseAction {
     return {
         type: PREV
+    };
+}
+
+export function clear(): PauseAction {
+    return {
+        type: CLEAR_FIELD
     };
 }

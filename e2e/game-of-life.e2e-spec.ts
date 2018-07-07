@@ -1,7 +1,6 @@
 import { browser } from 'protractor';
 import { AppPage } from './page/app.po';
 import { FieldComponent } from './page/field.co';
-import { OptionsComponent } from './page/options.co';
 
 const expectThatAllCellsAreDead = async (field: FieldComponent, width: number, height: number) => {
     expect(await field.getNumberOfRows()).toBe(height);
@@ -47,7 +46,7 @@ describe('game-of-life Field', () => {
 
         browser.waitForAngularEnabled(false);
 
-        await page.startGame();
+        await page.getButtons().startGame();
 
         expect(await page.getOptions().isWidthEnabled()).toBeFalsy();
         expect(await page.getOptions().isHeightEnabled()).toBeFalsy();
@@ -95,5 +94,25 @@ describe('game-of-life Field', () => {
         await page.getOptions().setHeight(15);
 
         expectThatAllCellsAreDead(field, 25, 15);
+    });
+
+    it('should clear the field', async () => {
+        const field: FieldComponent = page.getField();
+
+        await field.getRow(4).getCell(4).select();
+        await field.getRow(5).getCell(5).select();
+        await field.getRow(6).getCell(5).select();
+        await field.getRow(6).getCell(4).select();
+        await field.getRow(6).getCell(3).select();
+
+        expect(await field.getRow(4).getCell(4).isAlive()).toBeTruthy();
+        expect(await field.getRow(5).getCell(5).isAlive()).toBeTruthy();
+        expect(await field.getRow(6).getCell(5).isAlive()).toBeTruthy();
+        expect(await field.getRow(6).getCell(4).isAlive()).toBeTruthy();
+        expect(await field.getRow(6).getCell(3).isAlive()).toBeTruthy();
+
+        await page.getButtons().clearField();
+
+        expectThatAllCellsAreDead(field, 25, 17);
     });
 });
