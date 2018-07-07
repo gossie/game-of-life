@@ -96,7 +96,7 @@ describe('game-of-life Field', () => {
         expectThatAllCellsAreDead(field, 25, 15);
     });
 
-    fit('should clear the field', async () => {
+    it('should clear the field', async () => {
         const field: FieldComponent = page.getField();
 
         await field.getRow(4).getCell(4).select();

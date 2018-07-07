@@ -28,7 +28,7 @@ export const GAME_RUNNING = 'gameRunning';
 export const PAUSE_GAME = 'pauseGame';
 export const NEXT = 'next';
 export const PREV = 'prev';
-export const CLEAR_FIELD = 'prev';
+export const CLEAR_FIELD = 'clear';
 
 export function startGame(): StartAction {
     return {

@@ -5,6 +5,8 @@ import { GameRunningEvent } from './game-running.event';
 import { GamePausedEvent } from './game-paused.event';
 import { StoreHolder } from '../store.holder';
 import { StoreHolderMock } from '../store.holder.mock';
+import {Store} from 'redux';
+import Spy = jasmine.Spy;
 
 describe('GameService', () => {
     beforeEach(() => {
@@ -46,6 +48,27 @@ describe('GameService', () => {
             });
 
             service.startGame(500);
+        })();
+    });
+
+    it('call clear', done => {
+        inject([GameService, StoreHolder], (service: GameService, store: StoreHolder) => {
+            spyOn(store, 'getState').and.returnValue({
+                tick: {
+                    pastFields: [],
+                    futureFields: []
+                }
+            });
+            const dispatchSpy: Spy = spyOn(store, 'dispatch');
+
+            service.observeGameState().subscribe(event => {
+                expect(event).toEqual(new GamePausedEvent(false, false));
+                done();
+            });
+
+            service.clear();
+
+            expect(dispatchSpy).toHaveBeenCalledWith({type: 'clear'});
         })();
     });
 });
