@@ -1,7 +1,7 @@
 import { browser } from 'protractor';
 import { AppPage } from './page/app.po';
 
-fdescribe('game-of-life Buttons', () => {
+describe('game-of-life Buttons', () => {
     let page: AppPage;
 
     beforeEach(() => {
@@ -15,7 +15,7 @@ fdescribe('game-of-life Buttons', () => {
         page.getButtons().startGame();
 
         expect(await page.getButtons().isStartButtonVisible()).toBeFalsy();
-        expect(await page.getButtons().isPauseButtonVisible()).toBeFalsy();
+        expect(await page.getButtons().isPauseButtonVisible()).toBeTruthy();
         expect(await page.getButtons().isPauseButtonEnabled()).toBeTruthy();
         expect(await page.getButtons().isPrevButtonVisible()).toBeFalsy();
         expect(await page.getButtons().isNextButtonVisible()).toBeFalsy();
