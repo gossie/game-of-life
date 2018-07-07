@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { interval } from 'rxjs/observable/interval';
 import { StoreHolder } from '../store.holder';
-import { startGame, gameRunning, pauseGame, next, prev } from './actions';
+import { startGame, gameRunning, pauseGame, next, prev, clear } from './actions';
 import { GameEvent } from './game.event';
 import { GameStartedEvent } from './game-started.event';
 import { GamePausedEvent } from './game-paused.event';
@@ -51,6 +51,11 @@ export class GameService implements GameServiceInterface {
 
     public prev(): void {
         this.store.dispatch(prev());
+        this.timer.next(this.createPauseEvent());
+    }
+
+    public clear(): void {
+        this.store.dispatch(clear());
         this.timer.next(this.createPauseEvent());
     }
 

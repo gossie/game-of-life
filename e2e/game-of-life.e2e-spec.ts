@@ -95,4 +95,24 @@ describe('game-of-life Field', () => {
 
         expectThatAllCellsAreDead(field, 25, 15);
     });
+
+    fit('should clear the field', async () => {
+        const field: FieldComponent = page.getField();
+
+        await field.getRow(4).getCell(4).select();
+        await field.getRow(5).getCell(5).select();
+        await field.getRow(6).getCell(5).select();
+        await field.getRow(6).getCell(4).select();
+        await field.getRow(6).getCell(3).select();
+
+        expect(await field.getRow(4).getCell(4).isAlive()).toBeTruthy();
+        expect(await field.getRow(5).getCell(5).isAlive()).toBeTruthy();
+        expect(await field.getRow(6).getCell(5).isAlive()).toBeTruthy();
+        expect(await field.getRow(6).getCell(4).isAlive()).toBeTruthy();
+        expect(await field.getRow(6).getCell(3).isAlive()).toBeTruthy();
+
+        await page.getButtons().clearField();
+
+        expectThatAllCellsAreDead(field, 25, 17);
+    });
 });

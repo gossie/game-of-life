@@ -57,7 +57,7 @@ export class GameComponent {
     }
 
     public clear(): void {
-
+        this.gameService.clear();
     }
 
     public next(): void {

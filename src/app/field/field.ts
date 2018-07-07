@@ -89,6 +89,10 @@ export class Field {
         return new Field(this.maxNumberOfNewSamples, newCells);
     }
 
+    public clear(): Field {
+        return new Field(this.maxNumberOfNewSamples, this.cells[0].length, this.cells.length);
+    }
+
     public getCells(): Cell[][] {
         return this.cells;
     }

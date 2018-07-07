@@ -46,4 +46,16 @@ export class Buttons {
     public isPrevButtonEnabled(): promise.Promise<boolean> {
         return element(by.css('#prevButton')).isEnabled();
     }
+
+    public clearField(): promise.Promise<void> {
+        return element(by.css('#clearButton')).click();
+    }
+
+    public isClearButtonVisible(): promise.Promise<boolean> {
+        return element(by.css('#clearButton')).isPresent();
+    }
+
+    public isClearButtonEnabled(): promise.Promise<boolean> {
+        return element(by.css('#clearButton')).isEnabled();
+    }
 }
