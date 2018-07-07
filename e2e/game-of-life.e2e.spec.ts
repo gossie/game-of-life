@@ -1,7 +1,6 @@
 import { browser } from 'protractor';
 import { AppPage } from './page/app.po';
 import { FieldComponent } from './page/field.co';
-import { OptionsComponent } from './page/options.co';
 
 const expectThatAllCellsAreDead = async (field: FieldComponent, width: number, height: number) => {
     expect(await field.getNumberOfRows()).toBe(height);
@@ -47,7 +46,7 @@ describe('game-of-life Field', () => {
 
         browser.waitForAngularEnabled(false);
 
-        await page.startGame();
+        await page.getButtons().startGame();
 
         expect(await page.getOptions().isWidthEnabled()).toBeFalsy();
         expect(await page.getOptions().isHeightEnabled()).toBeFalsy();
