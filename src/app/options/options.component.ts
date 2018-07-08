@@ -19,8 +19,8 @@ export class OptionsComponent implements OnInit {
 
     private createForm(): void {
         this.optionsForm = this.fb.group({
-            width:  [25, Validators.required ],
-            height: [17, Validators.required ],
+            width:  [20, Validators.required ],
+            height: [15, Validators.required ],
             tick:   [500, Validators.required ],
             random: [0, Validators.required ]
         });

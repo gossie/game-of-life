@@ -1,5 +1,7 @@
-<button id="startButton" *ngIf="!isRunning" (click)="startGame()">Start</button>
-<button id="pauseButton" *ngIf="isRunning" (click)="pauseGame()">Pause</button>
-<button id="prevButton" *ngIf="!isRunning" (click)="prev()" [attr.disabled]="prevAvailable ? null : ''">Previous</button>
-<button id="nextButton" *ngIf="!isRunning" (click)="next()" [attr.disabled]="nextAvailable ? null : ''">Next</button>
-<button id="clearButton" *ngIf="!isRunning" (click)="clear()">Clear</button>
+<div class="buttons">
+    <button id="startButton" class="button is-primary" *ngIf="!isRunning" (click)="startGame()">Start</button>
+    <button id="pauseButton" class="button is-primary" *ngIf="isRunning" (click)="pauseGame()">Pause</button>
+    <button id="prevButton" class="button" *ngIf="!isRunning" (click)="prev()" [attr.disabled]="prevAvailable ? null : ''">Previous</button>
+    <button id="nextButton" class="button" *ngIf="!isRunning" (click)="next()" [attr.disabled]="nextAvailable ? null : ''">Next</button>
+    <button id="clearButton" class="button" *ngIf="!isRunning" (click)="clear()">Clear</button>
+</div>
