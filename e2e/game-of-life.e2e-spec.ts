@@ -23,7 +23,7 @@ describe('game-of-life Field', () => {
     it('should have 17 rows and each row should have 25 columns', async () => {
         const field: FieldComponent = page.getField();
 
-        expectThatAllCellsAreDead(field, 12, 15);
+        expectThatAllCellsAreDead(field, 14, 15);
     });
 
     it('should select a start configuration', async () => {
@@ -93,7 +93,7 @@ describe('game-of-life Field', () => {
         await page.getOptions().clearHeight();
         await page.getOptions().setHeight(10);
 
-        expectThatAllCellsAreDead(field, 12, 10);
+        expectThatAllCellsAreDead(field, 14, 10);
     });
 
     it('should clear the field', async () => {
@@ -113,6 +113,6 @@ describe('game-of-life Field', () => {
 
         await page.getButtons().clearField();
 
-        expectThatAllCellsAreDead(field, 12, 15);
+        expectThatAllCellsAreDead(field, 14, 15);
     });
 });
