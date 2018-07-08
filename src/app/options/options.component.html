@@ -1,14 +1,14 @@
 <form [formGroup]="optionsForm">
     <p>
-        Breite: <input id="width" formControlName="width" [attr.disabled]="gameRunning ? '' : null" />
+        Breite: <input id="width" class="input" formControlName="width" [attr.disabled]="gameRunning ? '' : null" />
     </p>
     <p>
-        Höhe: <input id="height" formControlName="height" [attr.disabled]="gameRunning ? '' : null" />
+        Höhe: <input id="height" class="input" formControlName="height" [attr.disabled]="gameRunning ? '' : null" />
     </p>
     <p>
-        Tick: <input id="tick" formControlName="tick" />
+        Tick: <input id="tick" class="input" formControlName="tick" />
     </p>
     <p>
-        Random: <input id="random" formControlName="random" />
+        Random: <input id="random" class="input" formControlName="random" />
     </p>
 </form>
