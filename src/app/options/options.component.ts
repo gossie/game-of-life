@@ -19,10 +19,10 @@ export class OptionsComponent implements OnInit {
 
     private createForm(): void {
         this.optionsForm = this.fb.group({
-            width:  [14, Validators.required ],
-            height: [15, Validators.required ],
-            tick:   [500, Validators.required ],
-            random: [0, Validators.required ]
+            width:  [14, [Validators.required, Validators.min(1), Validators.max(40) ]],
+            height: [15, [Validators.required, Validators.min(1), Validators.max(30) ]],
+            tick:   [500, [Validators.required, Validators.min(50) ]],
+            random: [0, [Validators.required, Validators.min(0), Validators.max(15) ]]
         });
         this.optionsForm.valueChanges.subscribe((value: string) => this.notify());
     }
@@ -34,12 +34,14 @@ export class OptionsComponent implements OnInit {
     }
 
     private notify(): void {
-        const options: Options = {
-            width:  parseInt(this.optionsForm.get('width').value),
-            height: parseInt(this.optionsForm.get('height').value),
-            tick:   parseInt(this.optionsForm.get('tick').value),
-            random: parseInt(this.optionsForm.get('random').value)
-        };
-        this.optionsService.notify(options);
+        if (this.optionsForm.valid) {
+            const options: Options = {
+                width:  parseInt(this.optionsForm.get('width').value),
+                height: parseInt(this.optionsForm.get('height').value),
+                tick:   parseInt(this.optionsForm.get('tick').value),
+                random: parseInt(this.optionsForm.get('random').value)
+            };
+            this.optionsService.notify(options);
+        }
     }
 }
