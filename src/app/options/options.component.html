@@ -1,14 +1,18 @@
 <form [formGroup]="optionsForm">
     <p>
-        Breite: <input id="width" class="input" formControlName="width" [attr.disabled]="gameRunning ? '' : null" />
+        Breite: <input id="width" class="input" formControlName="width" maxlength="2" [attr.disabled]="gameRunning ? '' : null" />
+        <span *ngIf="hasErrorMessage('width')" class="has-text-danger">{{getErrorMessage('width')}}</span>
     </p>
     <p>
-        Höhe: <input id="height" class="input" formControlName="height" [attr.disabled]="gameRunning ? '' : null" />
+        Höhe: <input id="height" class="input" formControlName="height" maxlength="2" [attr.disabled]="gameRunning ? '' : null" />
+        <span *ngIf="hasErrorMessage('height')" class="has-text-danger">{{getErrorMessage('height')}}</span>
     </p>
     <p>
         Tick: <input id="tick" class="input" formControlName="tick" />
+        <span *ngIf="hasErrorMessage('tick')" class="has-text-danger">{{getErrorMessage('tick')}}</span>
     </p>
     <p>
         Random: <input id="random" class="input" formControlName="random" />
+        <span *ngIf="hasErrorMessage('random')" class="has-text-danger">{{getErrorMessage('random')}}</span>
     </p>
 </form>
