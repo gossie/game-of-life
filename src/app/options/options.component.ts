@@ -15,7 +15,7 @@ export class OptionsComponent implements OnInit {
         height: 'Height has to be between 1 and 30',
         tick: 'Tick has to be bigger than 50',
         random: 'Random has to be between 0 and 15'
-    }
+    };
 
     public optionsForm: FormGroup;
     public gameRunning: boolean;
