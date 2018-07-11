@@ -57,9 +57,10 @@ export class OptionsComponent implements OnInit {
     }
 
     public getErrorMessage(field: string): string {
+        let result = '';
         if (this.optionsForm.get(field).invalid) {
-            return OptionsComponent.ERROR_MESSAGES[field];
+            result = OptionsComponent.ERROR_MESSAGES[field];
         }
-        return "";
+        return result;
     }
 }
