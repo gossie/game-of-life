@@ -10,6 +10,13 @@ import { Options } from './options';
 })
 export class OptionsComponent implements OnInit {
 
+    private static readonly ERROR_MESSAGES = {
+        width: 'Width has to be between 1 and 40',
+        height: 'Height has to be between 1 and 30',
+        tick: 'Tick has to be bigger than 50',
+        random: 'Random has to be between 0 and 15'
+    }
+
     public optionsForm: FormGroup;
     public gameRunning: boolean;
 
@@ -43,5 +50,16 @@ export class OptionsComponent implements OnInit {
             };
             this.optionsService.notify(options);
         }
+    }
+
+    public hasErrorMessage(field: string): boolean {
+        return this.optionsForm.get(field).invalid;
+    }
+
+    public getErrorMessage(field: string): string {
+        if (this.optionsForm.get(field).invalid) {
+            return OptionsComponent.ERROR_MESSAGES[field];
+        }
+        return "";
     }
 }
