@@ -6,6 +6,8 @@ import { OptionsModule } from './options/options.module';
 import { FieldModule } from './field/field.module';
 import { StoreHolder } from './store.holder';
 import { ControlsModule } from './controls/controls.module';
+import { GameModule } from './game/game.module';
+import { RulesModule } from './rules/rules.module';
 
 
 // const appRoutes: Routes = [
@@ -30,9 +32,8 @@ import { ControlsModule } from './controls/controls.module';
     ],
     imports: [
         BrowserModule,
-        ControlsModule,
-        OptionsModule,
-        FieldModule
+        GameModule,
+        RulesModule
     ],
     providers: [
         StoreHolder

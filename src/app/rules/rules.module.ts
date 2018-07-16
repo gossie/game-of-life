@@ -13,4 +13,4 @@ import { RulesComponent } from './rules.component';
         RulesComponent
     ]
 })
-export class OptionsModule { }
+export class RulesModule { }

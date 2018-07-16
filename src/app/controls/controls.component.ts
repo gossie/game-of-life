@@ -5,7 +5,7 @@ import { Options } from '../options/options';
 import { GamePausedEvent } from './game-paused.event';
 
 @Component({
-    selector: 'app-game',
+    selector: 'app-controls',
     templateUrl: './controls.component.html',
     styleUrls: ['./controls.component.css']
 })
