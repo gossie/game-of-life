@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { filter } from 'rxjs/operators';
-import { GameService } from './game/game.service';
+import { ControlsService } from './controls/controls.service';
 import { OptionsService } from './options/options.service';
 
 @Component({

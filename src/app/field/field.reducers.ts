@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { START_GAME, GAME_RUNNING, NEXT, PREV, CLEAR_FIELD } from '../game/actions';
+import { START_GAME, GAME_RUNNING, NEXT, PREV, CLEAR_FIELD } from '../controls/actions';
 import { OPTION_CHANGE } from '../options/actions';
 import { Field } from './field';
 import { Options } from '../options/options';

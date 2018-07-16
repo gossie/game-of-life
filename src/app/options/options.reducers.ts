@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PAUSE_GAME, START_GAME } from '../game/actions';
+import { PAUSE_GAME, START_GAME } from '../controls/actions';
 import { Reducers } from '../reducer.interface';
 
 interface State {

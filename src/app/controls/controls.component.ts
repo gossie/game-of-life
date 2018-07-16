@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { filter } from 'rxjs/operators';
-import { GameService } from './game.service';
+import { ControlsService } from './controls.service';
 import { Options } from '../options/options';
 import { GamePausedEvent } from './game-paused.event';
 
 @Component({
     selector: 'app-game',
-    templateUrl: './game.component.html',
-    styleUrls: ['./game.component.css']
+    templateUrl: './controls.component.html',
+    styleUrls: ['./controls.component.css']
 })
-export class GameComponent {
+export class ControlsComponent {
 
     isRunning: boolean;
     nextAvailable: boolean;
@@ -17,7 +17,7 @@ export class GameComponent {
 
     private timeout: number;
 
-    constructor(private gameService: GameService) {
+    constructor(private gameService: ControlsService) {
         gameService.observeOptions()
             .pipe(
                 filter(options => options.tick > 0)

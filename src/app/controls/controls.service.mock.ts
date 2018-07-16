@@ -1,9 +1,9 @@
-import { GameServiceInterface } from './game.service.interface';
+import { ControlsServiceInterface } from './controls.service.interface';
 import { Observable } from 'rxjs/Observable';
 import { GameEvent } from './game.event';
 import { Options } from '../options/options';
 
-export class GameServiceMock implements GameServiceInterface {
+export class ControlsServiceMock implements ControlsServiceInterface {
 
     observeGameState(): Observable<GameEvent> {
         return new Observable<GameEvent>(() => {});

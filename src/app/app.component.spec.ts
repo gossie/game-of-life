@@ -4,25 +4,25 @@ import { AppComponent } from './app.component';
 import { FieldComponent } from './field/field.component';
 import { OptionsComponent } from './options/options.component';
 import { OptionsService } from './options/options.service';
-import { GameService } from './game/game.service';
+import { ControlsService } from './controls/controls.service';
 import { OptionsServiceMock } from './options/options.service.mock';
-import { GameServiceMock } from './game/game.service.mock';
+import { ControlsServiceMock } from './controls/controls.service.mock';
 import { FieldService } from './field/field.service';
 import { FieldServiceMock } from './field/field.service.mock';
-import { GameComponent } from './game/game.component';
+import { ControlsComponent } from './controls/controls.component';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
-                GameComponent,
+                ControlsComponent,
                 FieldComponent,
                 OptionsComponent
             ],
             imports: [ ReactiveFormsModule ],
             providers: [
-                { provide: GameService, useClass: GameServiceMock },
+                { provide: ControlsService, useClass: ControlsServiceMock },
                 { provide: OptionsService, useClass: OptionsServiceMock },
                 { provide: FieldService, useClass: FieldServiceMock }
             ]

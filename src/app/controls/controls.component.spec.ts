@@ -1,25 +1,25 @@
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
-import { GameComponent } from './game.component';
-import { GameService } from './game.service';
-import { GameServiceMock } from './game.service.mock';
+import { ControlsComponent } from './controls.component';
+import { ControlsService } from './controls.service';
+import { ControlsServiceMock } from './controls.service.mock';
 import {Options} from '../options/options';
 import {GameStartedEvent} from './game-started.event';
 
-describe('GameComponent', () => {
-    let component: GameComponent;
-    let fixture: ComponentFixture<GameComponent>;
+describe('ControlsComponent', () => {
+    let component: ControlsComponent;
+    let fixture: ComponentFixture<ControlsComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ GameComponent ],
+            declarations: [ ControlsComponent ],
             providers: [
-                { provide: GameService, useClass: GameServiceMock }
+                { provide: ControlsService, useClass: ControlsServiceMock }
             ]
         }).compileComponents();
     }));
 
-    it('should check if game is running', inject([GameService], (service: GameService) => {
+    it('should check if game is running', inject([ControlsService], (service: ControlsService) => {
         const options: Options = {
             width: 15,
             height: 10,
@@ -30,7 +30,7 @@ describe('GameComponent', () => {
         spyOn(service, 'observeOptions').and.returnValue(Observable.of([options]));
         spyOn(service, 'observeGameState').and.returnValue(Observable.of([new GameStartedEvent()]));
 
-        fixture = TestBed.createComponent(GameComponent);
+        fixture = TestBed.createComponent(ControlsComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
 

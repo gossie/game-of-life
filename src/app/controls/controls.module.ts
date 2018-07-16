@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { GameService } from './game.service';
-import { GameComponent } from './game.component';
+import { ControlsService } from './controls.service';
+import { ControlsComponent } from './controls.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -10,13 +10,13 @@ import {FormsModule} from '@angular/forms';
         FormsModule
     ],
     declarations: [
-        GameComponent
+        ControlsComponent
     ],
     exports: [
-        GameComponent
+        ControlsComponent
     ],
     providers: [
-        GameService
+        ControlsService
     ]
 })
-export class GameModule { }
+export class ControlsModule { }
