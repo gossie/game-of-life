@@ -1,11 +1,10 @@
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OptionsService } from './options.service';
 import { OptionsComponent } from './options.component';
 import { OptionsServiceMock } from './options.service.mock';
-import {StoreHolder} from '../store.holder';
+import { Options } from './options';
 import Spy = jasmine.Spy;
-import {Options} from './options';
 
 describe('OptionsComponent', () => {
     let component: OptionsComponent;
