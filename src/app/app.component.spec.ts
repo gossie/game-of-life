@@ -11,7 +11,7 @@ import { FieldService } from './field/field.service';
 import { FieldServiceMock } from './field/field.service.mock';
 import { ControlsComponent } from './controls/controls.component';
 
-describe('AppComponent', () => {
+xdescribe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [

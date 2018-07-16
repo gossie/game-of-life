@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { filter } from 'rxjs/operators';
-import { ControlsService } from './controls/controls.service';
-import { OptionsService } from './options/options.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -9,4 +7,11 @@ import { OptionsService } from './options/options.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+    constructor(private route: ActivatedRoute) {
+    }
+
+    public getActiveRoute(): string {
+        return this.route.toString()
+    }
 }
