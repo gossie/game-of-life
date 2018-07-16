@@ -7,11 +7,4 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-    constructor(private route: ActivatedRoute) {
-    }
-
-    public getActiveRoute(): string {
-        return this.route.toString()
-    }
 }
