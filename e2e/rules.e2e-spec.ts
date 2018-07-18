@@ -1,4 +1,3 @@
-import { browser } from 'protractor';
 import { RulesPage } from './page/rules.po';
 
 describe('game-of-life Rules', () => {
