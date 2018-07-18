@@ -1,5 +1,5 @@
 import { browser } from 'protractor';
-import { AppPage } from './page/app.po';
+import { GamePage } from './page/game.po';
 import { FieldComponent } from './page/field.co';
 
 const expectThatAllCellsAreDead = async (field: FieldComponent, width: number, height: number) => {
@@ -13,10 +13,10 @@ const expectThatAllCellsAreDead = async (field: FieldComponent, width: number, h
 };
 
 describe('game-of-life Field', () => {
-    let page: AppPage;
+    let page: GamePage;
 
     beforeEach(() => {
-        page = new AppPage();
+        page = new GamePage();
         page.navigateTo();
     });
 
