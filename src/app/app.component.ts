@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { filter } from 'rxjs/operators';
-import { GameService } from './game/game.service';
-import { OptionsService } from './options/options.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-root',

@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { GameService } from './game.service';
+import { ReactiveFormsModule } from '@angular/forms';
 import { GameComponent } from './game.component';
-import {FormsModule} from '@angular/forms';
+import {ControlsModule} from '../controls/controls.module';
+import {FieldModule} from '../field/field.module';
+import {OptionsModule} from '../options/options.module';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule
-    ],
     declarations: [
         GameComponent
     ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        ControlsModule,
+        OptionsModule,
+        FieldModule,
+    ],
     exports: [
         GameComponent
-    ],
-    providers: [
-        GameService
     ]
 })
 export class GameModule { }

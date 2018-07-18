@@ -1,14 +1,7 @@
-<div class="columns">
-    <div class="column is-three-quarters">
-        <app-game id="controls"></app-game>
-    </div>
+<div class="tabs">
+    <ul>
+        <li routerLinkActive="is-active"><a routerLink="/game">Game</a></li>
+        <li routerLinkActive="is-active"><a routerLink="/rules">Rules</a></li>
+    </ul>
 </div>
-
-<div class="columns">
-    <div class="column is-three-quarters">
-        <app-field id="field"></app-field>
-    </div>
-    <div class="column is-one-quarter">
-        <app-options id="options"></app-options>
-    </div>
-</div>
+<router-outlet></router-outlet>

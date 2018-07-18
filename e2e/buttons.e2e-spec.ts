@@ -1,11 +1,11 @@
 import { browser } from 'protractor';
-import { AppPage } from './page/app.po';
+import { GamePage } from './page/game.po';
 
 describe('game-of-life Buttons', () => {
-    let page: AppPage;
+    let page: GamePage;
 
     beforeEach(() => {
-        page = new AppPage();
+        page = new GamePage();
         page.navigateTo();
     });
 

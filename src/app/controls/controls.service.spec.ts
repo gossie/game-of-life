@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { GameService } from './game.service';
+import { ControlsService } from './controls.service';
 import { GameStartedEvent } from './game-started.event';
 import { GameRunningEvent } from './game-running.event';
 import { GamePausedEvent } from './game-paused.event';
@@ -8,22 +8,22 @@ import { StoreHolderMock } from '../store.holder.mock';
 import {Store} from 'redux';
 import Spy = jasmine.Spy;
 
-describe('GameService', () => {
+describe('ControlsService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
                 { provide: StoreHolder, useClass: StoreHolderMock },
-                GameService
+                ControlsService
             ]
         });
     });
 
-    it('should be created', inject([GameService], (service: GameService) => {
+    it('should be created', inject([ControlsService], (service: ControlsService) => {
         expect(service).toBeTruthy();
     }));
 
     it('should listen to events', done => {
-        inject([GameService, StoreHolder], (service: GameService, store: StoreHolder) => {
+        inject([ControlsService, StoreHolder], (service: ControlsService, store: StoreHolder) => {
             spyOn(store, 'getState').and.returnValue({
                 tick: {
                     pastFields: [],
@@ -52,7 +52,7 @@ describe('GameService', () => {
     });
 
     it('call clear', done => {
-        inject([GameService, StoreHolder], (service: GameService, store: StoreHolder) => {
+        inject([ControlsService, StoreHolder], (service: ControlsService, store: StoreHolder) => {
             spyOn(store, 'getState').and.returnValue({
                 tick: {
                     pastFields: [],
