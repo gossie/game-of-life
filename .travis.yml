@@ -7,7 +7,6 @@ node_js:
   - "node"
 script:
   - npm run ci:test
-  - npm run ci:e2e
   - npm run build:prod
 deploy:
     provider: pages
