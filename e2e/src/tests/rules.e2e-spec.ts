@@ -1,4 +1,4 @@
-import { RulesPage } from './page/rules.po';
+import { RulesPage } from '../page/rules.po';
 
 describe('game-of-life Rules', () => {
     let page: RulesPage;

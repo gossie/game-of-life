@@ -1,5 +1,5 @@
 import { browser } from 'protractor';
-import { GamePage } from './page/game.po';
+import { GamePage } from '../page/game.po';
 
 describe('game-of-life Buttons', () => {
     let page: GamePage;

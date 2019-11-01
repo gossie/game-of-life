@@ -1,6 +1,6 @@
 import { browser } from 'protractor';
-import { GamePage } from './page/game.po';
-import { FieldComponent } from './page/field.co';
+import { GamePage } from '../page/game.po';
+import { FieldComponent } from '../page/field.co';
 
 const expectThatAllCellsAreDead = async (field: FieldComponent, width: number, height: number) => {
     expect(await field.getNumberOfRows()).toBe(height);
