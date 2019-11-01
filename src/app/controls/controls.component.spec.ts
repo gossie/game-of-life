@@ -1,10 +1,10 @@
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 import { ControlsComponent } from './controls.component';
 import { ControlsService } from './controls.service';
 import { ControlsServiceMock } from './controls.service.mock';
-import {Options} from '../options/options';
-import {GameStartedEvent} from './game-started.event';
+import { Options } from '../options/options';
+import { GameStartedEvent } from './game-started.event';
 
 describe('ControlsComponent', () => {
     let component: ControlsComponent;
@@ -27,8 +27,8 @@ describe('ControlsComponent', () => {
             random: 0
         };
 
-        spyOn(service, 'observeOptions').and.returnValue(Observable.of([options]));
-        spyOn(service, 'observeGameState').and.returnValue(Observable.of([new GameStartedEvent()]));
+        spyOn(service, 'observeOptions').and.returnValue(of([options]));
+        spyOn(service, 'observeGameState').and.returnValue(of([new GameStartedEvent()]));
 
         fixture = TestBed.createComponent(ControlsComponent);
         component = fixture.componentInstance;

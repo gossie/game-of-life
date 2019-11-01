@@ -1,5 +1,5 @@
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs';
+import { from } from 'rxjs';
 import { FieldComponent } from './field.component';
 import { Cell } from './cell';
 import { Status } from './status';
@@ -23,7 +23,7 @@ describe('FieldComponent', () => {
 
     it('should initialize cells', inject([FieldService], (service: FieldService) => {
         const field: Field = new Field(0, 100, 75);
-        spyOn(service, 'observe').and.returnValue(Observable.from([field]));
+        spyOn(service, 'observe').and.returnValue(from([field]));
 
         fixture = TestBed.createComponent(FieldComponent);
         component = fixture.componentInstance;
@@ -45,7 +45,7 @@ describe('FieldComponent', () => {
 
     it('should change cells status', inject([FieldService], (service: FieldService) => {
         const field: Field = new Field(0, 100, 75);
-        spyOn(service, 'observe').and.returnValue(Observable.from([field]));
+        spyOn(service, 'observe').and.returnValue(from([field]));
 
         fixture = TestBed.createComponent(FieldComponent);
         component = fixture.componentInstance;
