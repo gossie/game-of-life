@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StoreHolder } from '../store.holder';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable ,  Subject } from 'rxjs';
 import { Field } from './field';
 
 @Injectable()

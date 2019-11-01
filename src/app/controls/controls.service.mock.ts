@@ -1,5 +1,5 @@
 import { ControlsServiceInterface } from './controls.service.interface';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { GameEvent } from './game.event';
 import { Options } from '../options/options';
 

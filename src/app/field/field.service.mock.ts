@@ -1,5 +1,5 @@
 import { FieldServiceInterface } from './field.service.interface';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Field } from './field';
 
 export class FieldServiceMock implements FieldServiceInterface {

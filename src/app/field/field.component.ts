@@ -3,7 +3,7 @@ import { Cell } from './cell';
 import { Field } from './field';
 import { Status } from './status';
 import { FieldService } from './field.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-field',
