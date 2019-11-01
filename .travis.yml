@@ -9,7 +9,7 @@ script:
   - npm run ci:test
   - npm run webdriver:update
   - npm run ci:e2e
-  - npm run build:prod
+  - npm run build
 deploy:
     provider: pages
     skip-cleanup: true

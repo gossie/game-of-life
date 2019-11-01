@@ -11,8 +11,7 @@
     "ci:test": "ng test --watch false --browsers FirefoxHeadless",
     "ci:e2e": "ng e2e --protractor-config e2e/protractor-ci.conf.js",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build:prod": "ng build --aot -prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
